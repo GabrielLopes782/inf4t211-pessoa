@@ -16,7 +16,7 @@ $pjbd = new cPessoaJ();
     <body>
         <table>
             <tr>
-                <th>Nome</th><th>E-mail</th><th>CPF</th><th>Funções</th>
+                <th>Nome</th><th>E-mail</th><th>CNPJ</th><th>Funções</th>
             </tr>
             <?php
              if ($pjsBD == null) {
@@ -29,7 +29,16 @@ $pjbd = new cPessoaJ();
                         <td><?php echo $pj["email"]; ?> </td>
                         <td><?php echo $pj["cnpj"]; ?> </td>
                         <td>
+                            <form action="<?php $pjbd->deletarPessoaJBD(); ?>" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $pj["idPessoa"]; ?>"/>
+                                <input type="submit" name="delete" value="Deletar"/>
+                            </form>
+                             <form action="editarPessoaJ.php" method="POST">
+                                <input type="hidden" name="id" value="<?php echo $pj["idPessoa"]; ?>"/>
+                                <input type="submit" name="update" value="Editar"/>
+                            </form>
                         </td>
+                        
                     </tr>
                     <?php
                 endforeach;
